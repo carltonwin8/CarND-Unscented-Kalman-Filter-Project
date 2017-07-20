@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include "tools.h"
 
 using Eigen::MatrixXd;
 using Eigen::VectorXd;
@@ -33,6 +34,7 @@ public:
 
   ///* time when the state is true, in us
   long long time_us_;
+  long previous_timestamp_;
 
   ///* Process noise standard deviation longitudinal acceleration in m/s^2
   double std_a_;
@@ -82,7 +84,7 @@ public:
    * ProcessMeasurement
    * @param meas_package The latest measurement data of either radar or laser
    */
-  void ProcessMeasurement(MeasurementPackage meas_package);
+  void ProcessMeasurement(MeasurementPackage meas_package, Tools *tools);
 
   /**
    * Prediction Predicts sigma points, the state, and the state covariance
